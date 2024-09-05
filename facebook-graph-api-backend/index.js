@@ -9,6 +9,10 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
+
+app.get('/',(req,res)=>{
+    res.json({message:"Hello World from backend"})
+})
 // Route to handle Facebook login
 app.get('/auth/facebook/callback', async (req, res) => {
     const { code } = req.query;
