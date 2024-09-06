@@ -16,7 +16,9 @@ const PagesDropdown = ({ accessToken, onPageSelect }) => {
 
   const handlePageSelect = (e) => {
     const selectedPageId = e.target.value;
+    console.log(pages)
     const selectedPage = pages.find((page) => page.id === selectedPageId);
+    console.log(selectedPage)
     if (selectedPage) {
       onPageSelect(selectedPage.id, selectedPage.access_token);
     }

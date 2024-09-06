@@ -67,6 +67,8 @@ function App() {
     setSelectedPageData({ pageId, pageAccessToken }); 
   };
 
+  console.log(selectedPageData)
+
   return (
     <div>
       {!accessToken ? (
