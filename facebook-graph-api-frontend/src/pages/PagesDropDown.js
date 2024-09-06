@@ -14,8 +14,16 @@ const PagesDropdown = ({ accessToken, onPageSelect }) => {
     fetchPages();
   }, [accessToken]);
 
+  const handlePageSelect = (e) => {
+    const selectedPageId = e.target.value;
+    const selectedPage = pages.find((page) => page.id === selectedPageId);
+    if (selectedPage) {
+      onPageSelect(selectedPage.id, selectedPage.access_token);
+    }
+  };
+
   return (
-    <select onChange={(e) => onPageSelect(e.target.value)}>
+    <select onChange={handlePageSelect}>
       <option value="">Select a Page</option>
       {pages.map((page) => (
         <option key={page.id} value={page.id}>

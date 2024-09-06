@@ -47,7 +47,10 @@ import Profile from './pages/Profile';
 
 function App() {
   const [accessToken, setAccessToken] = useState(null);
-  const [selectedPageId, setSelectedPageId] = useState(null);
+  const [selectedPageId, setSelectedPageId] = useState({
+    pageId:"",
+    pageAccessToken:""
+  });
 
   // Get the access token from the URL query parameters after login
   useEffect(() => {
@@ -60,6 +63,10 @@ function App() {
     }
   }, []);
 
+  const handlePageSelect = (selectedPageId, selectedPageAccessToken) => {
+    setSelectedPageId(selectedPageId,selectedPageAccessToken);
+  };
+
   return (
     <div>
       {!accessToken ? (
@@ -67,11 +74,11 @@ function App() {
       ) : (
         <>
           <Profile accessToken={accessToken} />
-          <PagesDropdown accessToken={accessToken} onPageSelect={setSelectedPageId} />
+          <PagesDropdown accessToken={accessToken} onPageSelect={handlePageSelect} />
           {selectedPageId && (
             <PageInsights
               accessToken={accessToken}
-              pageId={selectedPageId}
+              pageId={selectedPageId.pageAccessToken}
               since="2024-01-01"
               until="2024-12-31"
             />
