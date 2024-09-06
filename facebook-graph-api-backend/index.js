@@ -20,7 +20,7 @@ app.get('/auth/facebook/callback', async (req, res) => {
     console.log(code)
     try {
         const tokenResponse = await axios.get(
-            `https://graph.facebook.com/v14.0/oauth/access_token?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${process.env.REDIRECT_URI}&client_secret=${process.env.FACEBOOK_APP_SECRET}&code=${code}`
+            `https://graph.facebook.com/v20.0/oauth/access_token?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${process.env.REDIRECT_URI}&client_secret=${process.env.FACEBOOK_APP_SECRET}&code=${code}`
         );
         const { access_token } = tokenResponse.data;
         res.json({ access_token });
