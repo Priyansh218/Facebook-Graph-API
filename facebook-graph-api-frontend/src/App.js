@@ -47,9 +47,9 @@ import Profile from './pages/Profile';
 
 function App() {
   const [accessToken, setAccessToken] = useState(null);
-  const [selectedPageId, setSelectedPageId] = useState({
-    pageId:"",
-    pageAccessToken:""
+  const [selectedPageData, setSelectedPageData] = useState({
+    pageId: "",
+    pageAccessToken: ""
   });
 
   // Get the access token from the URL query parameters after login
@@ -63,8 +63,8 @@ function App() {
     }
   }, []);
 
-  const handlePageSelect = (selectedPageId, selectedPageAccessToken) => {
-    setSelectedPageId(selectedPageId,selectedPageAccessToken);
+  const handlePageSelect = (pageId, pageAccessToken) => {
+    setSelectedPageData({ pageId, pageAccessToken }); 
   };
 
   return (
@@ -75,10 +75,10 @@ function App() {
         <>
           <Profile accessToken={accessToken} />
           <PagesDropdown accessToken={accessToken} onPageSelect={handlePageSelect} />
-          {selectedPageId && (
+          {selectedPageData.pageId && (
             <PageInsights
-              accessToken={accessToken}
-              pageId={selectedPageId.pageAccessToken}
+              accessToken={selectedPageData.pageAccessToken}
+              pageId={selectedPageData.pageId}
               since="2024-01-01"
               until="2024-12-31"
             />
