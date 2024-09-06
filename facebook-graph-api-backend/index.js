@@ -23,7 +23,8 @@ app.get('/auth/facebook/callback', async (req, res) => {
             `https://graph.facebook.com/v20.0/oauth/access_token?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${process.env.REDIRECT_URI}&client_secret=${process.env.FACEBOOK_APP_SECRET}&code=${code}`
         );
         const { access_token } = tokenResponse.data;
-        res.json({ access_token });
+        res.redirect(`https://facebook-graph-api-frontend.vercel.app/?access_token=${access_token}`);
+        // res.json({ access_token });
     } catch (error) {
         res.status(500).json({ message: 'Error fetching access token', error });
     }
