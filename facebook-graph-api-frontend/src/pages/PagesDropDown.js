@@ -7,7 +7,7 @@ const PagesDropdown = ({ accessToken, onPageSelect }) => {
   useEffect(() => {
     const fetchPages = async () => {
       const response = await axios.get(
-        `http://localhost:5000/api/pages?access_token=${accessToken}`
+        `https://facebook-graph-api-tau.vercel.app/api/pages?access_token=${accessToken}`
       );
       setPages(response.data.data);
     };

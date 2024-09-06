@@ -7,7 +7,7 @@ const Profile = ({ accessToken }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       const response = await axios.get(
-        `http://localhost:5000/api/profile?access_token=${accessToken}`
+        `https://facebook-graph-api-tau.vercel.app/api/profile?access_token=${accessToken}`
       );
       setProfile(response.data);
     };

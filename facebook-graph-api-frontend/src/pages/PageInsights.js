@@ -7,7 +7,7 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
   useEffect(() => {
     const fetchInsights = async () => {
       const response = await axios.get(
-        `http://localhost:5000/api/page-insights?page_id=${pageId}&access_token=${accessToken}&since=${since}&until=${until}`
+        `https://facebook-graph-api-tau.vercel.app/api/page-insights?page_id=${pageId}&access_token=${accessToken}&since=${since}&until=${until}`
       );
       setInsights(response.data.data);
     };
