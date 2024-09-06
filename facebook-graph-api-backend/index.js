@@ -61,7 +61,7 @@ app.get('/api/page-insights', async (req, res) => {
     const { page_id, access_token, since, until } = req.query;
     try {
         const insightsResponse = await axios.get(
-            `https://graph.facebook.com/${page_id}/insights?metric=page_fans,page_engaged_users,page_impressions,page_actions_post_reactions_total&period=total_over_range&since=${since}&until=${until}&access_token=${access_token}`
+            `https://graph.facebook.com/${page_id}/insights?metric=page_fans,page_engaged_users,page_impressions,page_actions_post_reactions_total&period=lifetime&since=${since}&until=${until}&access_token=${access_token}`
         );
         res.json(insightsResponse.data);
     } catch (error) {

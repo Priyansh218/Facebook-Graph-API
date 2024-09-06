@@ -73,7 +73,7 @@ function App() {
               accessToken={accessToken}
               pageId={selectedPageId}
               since="2024-01-01"
-              until="2024-09-01"
+              until="2024-12-31"
             />
           )}
         </>
