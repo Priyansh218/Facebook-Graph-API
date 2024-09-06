@@ -17,16 +17,16 @@ app.get('/',(req,res)=>{
 app.get('/auth/facebook/callback', async (req, res) => {
     const { code } = req.query;
     if (!code) return res.status(400).send('Authorization code missing');
-
-    try {
-        const tokenResponse = await axios.get(
-            `https://graph.facebook.com/v14.0/oauth/access_token?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${process.env.REDIRECT_URI}&client_secret=${process.env.FACEBOOK_APP_SECRET}&code=${code}`
-        );
-        const { access_token } = tokenResponse.data;
-        res.json({ access_token });
-    } catch (error) {
-        res.status(500).json({ message: 'Error fetching access token', error });
-    }
+    console.log(code)
+    // try {
+    //     const tokenResponse = await axios.get(
+    //         `https://graph.facebook.com/v14.0/oauth/access_token?client_id=${process.env.FACEBOOK_APP_ID}&redirect_uri=${process.env.REDIRECT_URI}&client_secret=${process.env.FACEBOOK_APP_SECRET}&code=${code}`
+    //     );
+    //     const { access_token } = tokenResponse.data;
+    //     res.json({ access_token });
+    // } catch (error) {
+    //     res.status(500).json({ message: 'Error fetching access token', error });
+    // }
 });
 
 // Route to get user profile info
