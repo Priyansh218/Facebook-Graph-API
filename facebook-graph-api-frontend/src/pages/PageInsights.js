@@ -26,13 +26,13 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
           <div key={index}>
             <h3>{insight.title}</h3>
             <p>{insight.description}</p>
-            <ul>
+            {/* <ul>
               {insight.values.map((entry, idx) => (
                 <li key={idx}>
                   {entry.end_time}: {entry.value}
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         ))
       )}
