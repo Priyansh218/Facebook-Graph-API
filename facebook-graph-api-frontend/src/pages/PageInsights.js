@@ -13,9 +13,7 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
     };
     fetchInsights();
   }, [accessToken, pageId, since, until]);
-  console.log(insights.map((insight, index)=>{
-    insight.values.map((item,ind)=>item.value)
-  }))
+  console.log(insights)
   if (!insights) return <p>Loading...</p>;
 
   return (
@@ -28,13 +26,13 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
           <div key={index}>
             <h3>{insight.title}</h3>
             <p>{insight.description}</p>
-            {/* <ul>
+            <ul>
               {insight.values.map((entry, idx) => (
                 <li key={idx}>
                   {entry.end_time}: {entry.value}
                 </li>
               ))}
-            </ul> */}
+            </ul>
           </div>
         ))
       )}
