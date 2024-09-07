@@ -19,11 +19,23 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
   return (
     <div>
       <h2>Page Insights</h2>
-      {insights.map((insight, index) => (
-        <div key={index}>
-          <p>{insight.title}: {insight.values[0]?.value || "No data"}</p>
-        </div>
-      ))}
+      {insights.length === 0 ? (
+        <p>No insights available</p>
+      ) : (
+        insights.map((insight, index) => (
+          <div key={index}>
+            <h3>{insight.title}</h3>
+            <p>{insight.description}</p>
+            <ul>
+              {insight.values.map((entry, idx) => (
+                <li key={idx}>
+                  {entry.end_time}: {entry.value}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      )}
     </div>
   );
 };
