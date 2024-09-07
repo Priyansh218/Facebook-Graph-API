@@ -42,7 +42,7 @@ function App() {
               accessToken={selectedPageData.pageAccessToken}
               pageId={selectedPageData.pageId}
               since="2024-09-01"
-              until="2024-09-31"
+              until="2024-09-10"
             />
           )}
           </div>
