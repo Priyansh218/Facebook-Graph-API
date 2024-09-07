@@ -36,6 +36,7 @@ function App() {
         <>
           <Profile accessToken={accessToken} />
           <PagesDropdown accessToken={accessToken} onPageSelect={handlePageSelect} />
+          <div>
           {selectedPageData.pageId && (
             <PageInsights
               accessToken={selectedPageData.pageAccessToken}
@@ -44,6 +45,8 @@ function App() {
               until="2024-09-31"
             />
           )}
+          </div>
+
         </>
       )}
     </div>
