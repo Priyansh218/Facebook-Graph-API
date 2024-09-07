@@ -29,7 +29,11 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
             <ul>
               {insight.values.map((entry, idx) => (
                 <li key={idx}>
-                  Date: {new Date(entry.end_time).toLocaleDateString()} - Value: {entry.value}
+                  Date: {new Date(entry.end_time).toLocaleDateString()} - Value: {typeof entry.value === 'object' && Object.keys(entry.value).length > 0
+                      ? JSON.stringify(entry.value) // Display the object as a string
+                      : typeof entry.value === 'number' 
+                      ? entry.value
+                      : 'No Data'}
                 </li>
               ))}
             </ul>
