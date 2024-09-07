@@ -29,7 +29,7 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
             <ul>
               {insight.values[0].map((entry, idx) => (
                 <li key={idx}>
-                  {entry.end_time}: {entry.value}
+                  Date: {new Date(entry.end_time).toLocaleDateString()} - Value: {entry.value}
                 </li>
               ))}
             </ul>
