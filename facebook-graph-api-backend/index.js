@@ -64,7 +64,7 @@ app.get('/api/page-insights', async (req, res) => {
     console.log('Page Access Token profile api',access_token)
     try {
         const insightsResponse = await axios.get(
-            `https://graph.facebook.com/${page_id}/insights?metric=page_post_engagements,page_actions_post_reactions_total,page_impressions,page_fans,&period=week&since=${since}&until=${until}&access_token=${access_token}`
+            `https://graph.facebook.com/${page_id}/insights?metric=page_fans,page_post_engagements,page_actions_post_reactions_total,page_impressions&period=day&since=${since}&until=${until}&access_token=${access_token}`
         );
         res.json(insightsResponse.data);
     } catch (error) {
