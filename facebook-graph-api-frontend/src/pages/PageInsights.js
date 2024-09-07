@@ -13,7 +13,9 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
     };
     fetchInsights();
   }, [accessToken, pageId, since, until]);
-  console.log(insights)
+  console.log(insights.map((insight, index)=>{
+    insight.values.map((item,ind)=>item.value)
+  }))
   if (!insights) return <p>Loading...</p>;
 
   return (
