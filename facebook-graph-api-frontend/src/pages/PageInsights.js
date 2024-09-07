@@ -19,27 +19,36 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
   return (
     <div>
       <h2>Page Insights</h2>
-      {insights.length === 0 ? (
-        <p>No insights available</p>
-      ) : (
-        insights.map((insight, index) => (
-          <div key={index}>
-            <h3>{insight.title}</h3>
-            <p>{insight.description}</p>
-            <ul>
-              {insight.values.map((entry, idx) => (
-                <li key={idx}>
-                  Date: {new Date(entry.end_time).toLocaleDateString()} - Value: {typeof entry.value === 'object' && Object.keys(entry.value).length > 0
-                      ? JSON.stringify(entry.value) // Display the object as a string
-                      : typeof entry.value === 'number' 
-                      ? entry.value
+      {insights.map((insight, index) => (
+        <div key={index} style={{ marginBottom: '20px' }}>
+          <h3>{insight.title}</h3> {/* Display the title */}
+          <p><strong>Description:</strong> {insight.description}</p> {/* Display the description */}
+          
+          <table border="1" style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {insight.values.map((valueObj, idx) => (
+                <tr key={idx}>
+                  <td>{valueObj.end_time ? new Date(valueObj.end_time).toLocaleDateString() : 'N/A'}</td> {/* Handle missing end_time */}
+                  <td>
+                    {/* Handle different types of value (object, number, or empty) */}
+                    {typeof valueObj.value === 'object' && Object.keys(valueObj.value).length > 0
+                      ? JSON.stringify(valueObj.value) // Display the object as a string
+                      : typeof valueObj.value === 'number' 
+                      ? valueObj.value
                       : 'No Data'}
-                </li>
+                  </td>
+                </tr>
               ))}
-            </ul>
-          </div>
-        ))
-      )}
+            </tbody>
+          </table>
+        </div>
+      ))}
     </div>
   );
 };
