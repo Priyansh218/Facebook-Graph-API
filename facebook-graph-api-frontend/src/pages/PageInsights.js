@@ -27,7 +27,7 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
             <h3>{insight.title}</h3>
             <p>{insight.description}</p>
             <ul>
-              {insight.values[0].map((entry, idx) => (
+              {insight.values.map((entry, idx) => (
                 <li key={idx}>
                   Date: {new Date(entry.end_time).toLocaleDateString()} - Value: {entry.value}
                 </li>
