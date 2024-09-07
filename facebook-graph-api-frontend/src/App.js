@@ -40,8 +40,8 @@ function App() {
             <PageInsights
               accessToken={selectedPageData.pageAccessToken}
               pageId={selectedPageData.pageId}
-              since="2024-08-01"
-              until="2024-10-31"
+              since="2024-09-01"
+              until="2024-09-31"
             />
           )}
         </>
