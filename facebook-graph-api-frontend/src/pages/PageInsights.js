@@ -9,11 +9,11 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
       const response = await axios.get(
         `https://facebook-graph-api-tau.vercel.app/api/page-insights?page_id=${pageId}&access_token=${accessToken}&since=${since}&until=${until}`
       );
-      setInsights(response.data.data);
+      setInsights(response.data.data || []);
     };
     fetchInsights();
   }, [accessToken, pageId, since, until]);
-
+  console.log(insights)
   if (!insights) return <p>Loading...</p>;
 
   return (
@@ -21,7 +21,7 @@ const PageInsights = ({ accessToken, pageId, since, until }) => {
       <h2>Page Insights</h2>
       {insights.map((insight, index) => (
         <div key={index}>
-          <p>{insight.title}: {insight.values[0].value}</p>
+          <p>{insight.title}: {insight.values[0]?.value || "No data"}</p>
         </div>
       ))}
     </div>
