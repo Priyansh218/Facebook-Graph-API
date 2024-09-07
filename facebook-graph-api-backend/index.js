@@ -33,6 +33,7 @@ app.get('/auth/facebook/callback', async (req, res) => {
 // Route to get user profile info
 app.get('/api/profile', async (req, res) => {
     const { access_token } = req.query;
+    console.log('User Access Token profile api',access_token)
     try {
         const profileResponse = await axios.get(
             `https://graph.facebook.com/me?fields=name,picture&access_token=${access_token}`
@@ -46,6 +47,7 @@ app.get('/api/profile', async (req, res) => {
 // Route to get the list of pages
 app.get('/api/pages', async (req, res) => {
     const { access_token } = req.query;
+    console.log('User Access Token Pages api',access_token)
     try {
         const pagesResponse = await axios.get(
             `https://graph.facebook.com/me/accounts?access_token=${access_token}`
@@ -59,9 +61,10 @@ app.get('/api/pages', async (req, res) => {
 // Route to get page insights
 app.get('/api/page-insights', async (req, res) => {
     const { page_id, access_token, since, until } = req.query;
+    console.log('Page Access Token profile api',access_token)
     try {
         const insightsResponse = await axios.get(
-            `https://graph.facebook.com/${page_id}/insights?metric=page_fans,page_engaged_users,page_impressions,page_actions_post_reactions_total&period=day&since=${since}&until=${until}&access_token=${access_token}`
+            `https://graph.facebook.com/${page_id}/insights?metric=page_fans,page_post_engagements,page_actions_post_reactions_total,page_impressions&period=day&since=${since}&until=${until}&access_token=${access_token}`
         );
         res.json(insightsResponse.data);
     } catch (error) {
